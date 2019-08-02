@@ -1,12 +1,13 @@
-FROM golang as build
+FROM golang:alpine as build
 
 WORKDIR /go/src/app
 COPY . .
 
-RUN curl -s https://raw.githubusercontent.com/golang/dep/master/install.sh | sh > /dev/null
+# Install dep and satisfy dependencies
+RUN apk add dep
 RUN dep ensure
 
-RUN go get -d -v ./...
+# Build and install program
 RUN go install -v ./...
 
 FROM gcr.io/distroless/base
