@@ -1,6 +1,6 @@
 FROM golang as build
 
-WORKDIR /go/src/KAPPAS
+WORKDIR /go/src/app
 COPY . .
 
 RUN curl -s https://raw.githubusercontent.com/golang/dep/master/install.sh | sh > /dev/null
@@ -10,5 +10,5 @@ RUN go get -d -v ./...
 RUN go install -v ./...
 
 FROM gcr.io/distroless/base
-COPY --from=build /go/bin/KAPPAS /
-CMD ["/KAPPAS"]
+COPY --from=build /go/bin/app /
+CMD ["/app"]
