@@ -10,6 +10,7 @@ RUN dep ensure
 # Build and install program
 RUN go install -v ./...
 
+# Squash and run
 FROM gcr.io/distroless/base
 COPY --from=build /go/bin/app /
 CMD ["/app"]
