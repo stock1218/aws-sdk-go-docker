@@ -5,4 +5,4 @@ A light-weight, distroless container for deploying Go servers with the AWS Go SD
 This Dockerfile uses a multi-stage build that starts with the [golang](https://hub.docker.com/_/golang) [alpine](https://alpinelinux.org/) base. It will then copy the project, install [dep](https://github.com/golang/dep), satisfy all the project's dependencies, and build the application. It then merges the previous layers to use a [distroless](https://github.com/GoogleContainerTools/distroless) layer, and runs the application.
 
 ## How big is it?
-18.9MB 😲
+27.3MB 😲

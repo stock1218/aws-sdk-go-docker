@@ -1,10 +1,10 @@
-FROM golang:alpine as build
+FROM golang as build
 
 WORKDIR /go/src/app
 COPY . .
 
 # Install dep and satisfy dependencies
-RUN apk add dep
+RUN curl -s https://raw.githubusercontent.com/golang/dep/master/install.sh | sh > /dev/null
 RUN dep ensure
 
 # Build and install program
